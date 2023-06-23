@@ -1,0 +1,9 @@
+{
+    "name": "theo/beegame",
+    "autoload": {
+        "psr-4": {
+            "Bee\\": "src/"
+        }
+    },
+    "require": {}
+}

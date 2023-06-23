@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+    nginx:
+        container_name: "beegame_nginx"
+        build: docker/nginx
+        ports:
+            - "8080:80"
+        volumes:
+            - ./:/var/www/html
+            - ./docker_config/nginx/default.conf:/etc/nginx/conf.d/default.conf
+        depends_on:
+            - "php"
+        networks:
+            beegame:
+
+    php:
+        container_name: "beegame_php"
+        build: docker/php-fpm
+        volumes:
+            - ./:/var/www/html
+        networks:
+            beegame:
+
+networks:
+    beegame:
